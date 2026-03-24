@@ -12,9 +12,9 @@ spl_autoload_register(function ($class){
 //    $filename = "../core/{$class}.php";
 //    var_dump($class);
 
-    $filename = "..\\" . $class . ".php";
+    $path = "..\\" . $class . ".php";
 
-//    require_once ($filename);
+    require_once ($path);
 });
 
 //spl_autoload_register('autoloadingClass');

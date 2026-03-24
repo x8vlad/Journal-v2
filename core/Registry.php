@@ -1,5 +1,5 @@
 <?php
-namespace system\engine;
+namespace core;
 final class Registry{
     private $data = [];
 
@@ -9,6 +9,9 @@ final class Registry{
         }else{
             return null;
         }
+//        if (array_key_exists($key, $this->data)) {
+//            return $this->data[$key];
+//        }
     }
 
     public function set($key, $value){
@@ -23,8 +26,9 @@ final class Registry{
         }
     }
 
-//    public function __construct()
-//    {
-//        echo __FILE__ . "<br>";
-//    }
+    public function __construct()
+    {
+        echo __FILE__ . "<br>";
+    }
+
 }
