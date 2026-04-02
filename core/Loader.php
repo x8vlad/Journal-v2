@@ -11,7 +11,9 @@ final class Loader{
 
     public function controller($route, $data = array()){
         // clear path
-
+//        $route = preg_replace('/[^a-zA-Z0-9_\/]/', '', (string)$route);
+//        $class_name = str_replace('/', '\\', $route);
+//        new $class_name;
     }
 
     public function model(){

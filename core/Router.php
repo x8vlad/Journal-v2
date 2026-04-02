@@ -32,28 +32,39 @@ class Router
     }
 
     public function show(){
-        var_dump($this->routes);
+        echo "method show: ";
+        echo "<pre>";
+            var_dump($this->routes);
+        echo "</pre>";
     }
 
     // match
 
     public function match(){
         $isMatch = false;
+
         foreach ($this->routes as $route){
+//            echo "<pre>";
+//                var_dump($route);
+//            echo "</pre>";
+            $class_name = $route['controller'];
+            echo "class naem: " . $class_name . "<br>";
+
             if($this->uri === $route['uri'] && $this->method === $route['method']){
-                echo "ok";
-                    $isMatch = true;
-                    // require controller
-                    break;
+                echo " ok";
+                $isMatch = true;
+//                    echo $class_name;
+                return $class_name;
 
             }
             else{
-                echo "not ok";
+                echo " not ok";
             }
+
         }
         if(!$isMatch){
             // redirect to not faund page
-            echo "404 - NOT FOUDN";
+            echo " 404 - NOT FOUDN";
             die();
         }
     }
