@@ -17,6 +17,13 @@ class testClass extends Controller {
 
     public function index(){
         $this->load->model("TestModel")->testM();
+
+        $data_for_view = [
+            'page_title' => 'Test title from a controller!',
+            'test_content' => 'Test content from a controller!'
+        ];
+        echo $this->load->view("test_view", $data_for_view);
+
         //
 //        var_dump($this->load->model("TestModel"));
     }

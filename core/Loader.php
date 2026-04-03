@@ -23,7 +23,7 @@ final class Loader{
         //name_model = TestM
         $name_model = preg_replace('/[^a-zA-Z0-9_\/]/', '', (string)$name_model);
 
-        $registry_key = "model_".str_replace('/', '-', strtolower($name_model));
+        $registry_key = "model".str_replace('/', '-', strtolower($name_model));
 
         if(!$this->registry->has($registry_key)){
             $file = __DIR__ . '/../app/model/' . $name_model . '.php';
@@ -38,8 +38,19 @@ final class Loader{
         return $this->registry->get($registry_key);
     }
 
-    public function view(){
-
+    public function view($path_view, $data = []){
+        $data = (object)$data;
+        // app/view/common/header.php
+        $file = __DIR__ . '/../app/view/' . $path_view . '.php';
+        if(!file_exists($file)){
+            echo "404 - NOT FOUND";
+            return false;
+        }
+            //
+            ob_start();
+            include $file;
+            $output_content = ob_get_clean();
+            return $output_content;
     }
 
 //    public function helper(){}
