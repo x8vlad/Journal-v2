@@ -9,7 +9,7 @@ abstract class Controller{
     }
 
     public function __get($key){
-        return $this->registry->get[$key];
+        return $this->registry->get($key);
     }
 
     public function __set($key, $value){

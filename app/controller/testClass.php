@@ -1,6 +1,8 @@
 <?php
 namespace app\controller;
-class testClass {
+use core\Controller;
+
+class testClass extends Controller {
 
     public function show(){
 //        echo __FILE__;
@@ -19,6 +21,7 @@ class testClass {
     }
 
     public function index(){
-
+        $this->load->model("TestM");
+        var_dump($this->load->model("TestM"));
     }
 }
