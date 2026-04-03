@@ -1,6 +1,6 @@
 <?php
-class TestModel extends \core\Model {
+class ModelTestModel extends \core\Model {
     public function TestM(){
-        echo 34;
+        echo " Model work";
     }
 }

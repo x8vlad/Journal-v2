@@ -15,7 +15,7 @@ final class Registry{
     }
 
     public function set($key, $value){
-        $this->data[$key] = $value;
+        return $this->data[$key] = $value;
     }
 
     public function has($key){

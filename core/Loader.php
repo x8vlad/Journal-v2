@@ -16,24 +16,26 @@ final class Loader{
         }
         $class = new $route; // return $class_name; = app\controller\testClass
         //TODO: in future check if this method exist
-        return $class->$method;
+        return $class->$method();
     }
 
     public function model($name_model){
         //name_model = TestM
         $name_model = preg_replace('/[^a-zA-Z0-9_\/]/', '', (string)$name_model);
 
-        if(!$this->registry->has('model/' . str_replace('/', '-', $name_model))){
+        $registry_key = "model_".str_replace('/', '-', strtolower($name_model));
+
+        if(!$this->registry->has($registry_key)){
             $file = __DIR__ . '/../app/model/' . $name_model . '.php';
-            $classModel = 'Model' . preg_replace('/[^a-zA-Z0-9]/', '', $name_model);
-            //$classModel = ModelTestM
+            $class_model = 'Model' . preg_replace('/[^a-zA-Z0-9]/', '', $name_model);
+            //$class_model = ModelTestModel
             if(file_exists($file)){
                 include_once($file);
-                $model_obj = new $classModel($this->registry);
-                $this->registry->set("model".strtolower($classModel), $model_obj);
-            }
+                $model_obj = new $class_model($this->registry);
+                $this->registry->set($registry_key, $model_obj);
+            }else{return false;}
         }
-        return $this->registry->get("model".strtolower($classModel));
+        return $this->registry->get($registry_key);
     }
 
     public function view(){

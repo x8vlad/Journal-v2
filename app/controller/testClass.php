@@ -14,14 +14,10 @@ class testClass extends Controller {
 //        }
     }
 
-    public function __construct()
-    {
-        echo "all work;";
-        echo __FILE__ . "<br>";
-    }
 
     public function index(){
-        $this->load->model("TestM");
-        var_dump($this->load->model("TestM"));
+        $this->load->model("TestModel")->testM();
+        //
+//        var_dump($this->load->model("TestModel"));
     }
 }
