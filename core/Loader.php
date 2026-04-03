@@ -9,11 +9,13 @@ final class Loader{
         $this->registry = $registry;
     }
 
-    public function controller($route, $data = array()){
-        // clear path
-//        $route = preg_replace('/[^a-zA-Z0-9_\/]/', '', (string)$route);
-//        $class_name = str_replace('/', '\\', $route);
-//        new $class_name;
+    public function controller($route, $method){
+        if(empty($method)){
+            $method = "index";
+        }
+        $class = new $route; // return $class_name; = app\controller\testClass
+        //TODO: in future check if this method exist
+        return $class->$method;
     }
 
     public function model(){

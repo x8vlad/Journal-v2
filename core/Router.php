@@ -48,7 +48,7 @@ class Router
 //                var_dump($route);
 //            echo "</pre>";
             $class_name = $route['controller'];
-            echo "class naem: " . $class_name . "<br>";
+            echo "class name: " . $class_name . "<br>";
 
             if($this->uri === $route['uri'] && $this->method === $route['method']){
                 echo " ok";
@@ -63,7 +63,7 @@ class Router
 
         }
         if(!$isMatch){
-            // redirect to not faund page
+            // redirect to not found page
             echo " 404 - NOT FOUDN";
             die();
         }

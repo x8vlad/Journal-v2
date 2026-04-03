@@ -17,4 +17,8 @@ class testClass {
         echo "all work;";
         echo __FILE__ . "<br>";
     }
+
+    public function index(){
+
+    }
 }
