@@ -53,7 +53,7 @@ class Router
             if($this->uri === $route['uri'] && $this->method === $route['method']){
                 echo " ok";
                 $isMatch = true;
-//                    echo $class_name;
+//                    echo $class_name; app\controller\testClass
                 return $class_name;
 
             }
