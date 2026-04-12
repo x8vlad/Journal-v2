@@ -8,14 +8,20 @@ $db = new \core\Dbh($registry);
 $registry->set("db", $db);
 
 
-new \core\Application();
+//new \core\Application();
 $router = new core\Router();
-$router->add("", "app\controller\\testClass", "GET");
-$router->show();
-$class_name = $router->match();
+$router->get("", "app\\controller\\testClass");
 
-$controller = new $class_name($registry);
-$controller->index();
+$class_name = $router->match();
+// class_name = app\controller\\testClass
+//$router->show();
+// new app\controller\\testClass BUT php doesnt know about this class so thanks aultoaeer he require this class
+
+//$controller = new $class_name($registry);
+//$controller->index();
+
+// app\controller\testClass == testClass
+$loader->controller($class_name, "");
 //$test->show();
 //$test = new \app\controller\testClass($registry);
 //$test->index();

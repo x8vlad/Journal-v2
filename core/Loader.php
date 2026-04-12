@@ -10,11 +10,11 @@ final class Loader{
     }
 
     public function controller($route, $method){
-        $route = preg_replace('/[^a-zA-Z0-9_\/]/', '', (string)$route);
+        $route = preg_replace('#[^a-zA-Z0-9_\\\/]#', '', (string)$route);
         if(empty($method)){
             $method = "index";
         }
-        $class = new $route; // return $class_name; = app\controller\testClass
+        $class = new $route($this->registry); // return $class_name; = app\controller\testClass
         //TODO: in future check if this method exist
         return $class->$method();
     }
