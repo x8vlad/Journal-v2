@@ -15,11 +15,11 @@ $router->get("", "app\\controller\\testClass");
 $class_name = $router->match();
 // class_name = app\controller\\testClass
 //$router->show();
+//class name app\controller\\testClass
 // new app\controller\\testClass BUT php doesnt know about this class so thanks aultoaeer he require this class
 
 //$controller = new $class_name($registry);
 //$controller->index();
-
 // app\controller\testClass == testClass
 $loader->controller($class_name, "");
 //$test->show();

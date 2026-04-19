@@ -22,6 +22,7 @@ class testClass extends Controller {
             'page_title' => 'Test title from a controller!',
             'test_content' => 'Test content from a controller!'
         ];
+
 //      echo $this->load->view("test_view", $data_for_view);
         $this->render("test_view", $data_for_view);
 //        var_dump($this->load->model("TestModel"));

@@ -43,7 +43,7 @@ final class Loader{
         // app/view/common/header.php
         $file = __DIR__ . '/../app/view/' . $path_view . '.php';
         if(!file_exists($file)){
-            echo "404 - NOT FOUND";
+            echo "404 - NOT FOUND - view method";
             return false;
         }
             //

@@ -45,18 +45,18 @@ class Router
         $isMatch = false;
 
         foreach ($this->routes as $route){
-            echo "<pre>";
-                var_dump($route);
-            echo "</pre>";
+//            echo "<pre>";
+//                var_dump($route);
+//            echo "</pre>";
             $class_name = $route['controller'];
             if($this->uri === $route['uri'] && $this->method === $route['method']){
-                echo " ok";
+//                echo " ok";
                 $isMatch = true;
 //                    echo $class_name; app\controller\testClass
                 return $class_name;
             }
             else{
-                echo " not ok";
+                echo " not ok from " . __FILE__;
             }
         }
         if(!$isMatch){

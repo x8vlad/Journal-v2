@@ -8,7 +8,7 @@ spl_autoload_register(function ($class){
 //    var_dump($class);
     $class = str_replace('\\', DIRECTORY_SEPARATOR, $class);
     $path = ".." . DIRECTORY_SEPARATOR . $class . ".php";
-    var_dump($path);
+//    var_dump($path);
     require_once ($path);
 });
 //function autoloadingClass($class){

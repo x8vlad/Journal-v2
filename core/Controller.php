@@ -2,7 +2,7 @@
     namespace core;
     abstract class Controller{
         public function render($view_path, $data = []) {
-            $header = $this->load->view('common/header', $data); // render by default header
+            $header = $this->load->controller('app\controller\common\HeaderController', 'index'); // render by controller(in that controller returned view)
             $content = $this->load->view($view_path, $data); // content using it in ur controller
             $footer = $this->load->view('common/footer', $data); // render by default footer
 

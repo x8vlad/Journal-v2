@@ -1,3 +1,6 @@
+<?php /**
+ * @var object $data
+ */ ?>
 <!doctype html>
 <html lang="en">
 <head>
@@ -34,14 +37,13 @@
         <!--  -->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-
-<!--                --><?php //foreach($munuLinks as $link): ?>
-<!--                    <li class="nav-item">-->
-<!--                        <a class="nav-link" href="--><?php //= $link['url']; ?><!--">-->
-<!--                            --><?php //= $link['lable']; ?>
-<!--                        </a>-->
-<!--                    </li>-->
-<!--                --><?php //endforeach; ?>
+                <?php foreach($data as $link): ?>
+                    <li class="nav-item">
+                        <a class="nav-link" href="<?= $link['url']; ?>">
+                            <?= $link['label']; ?>
+                        </a>
+                    </li>
+                <?php endforeach; ?>
             </ul>
             <!-- for searching info -->
             <!-- Login name надо будет менять -->
@@ -50,12 +52,6 @@
             <span class="fw-bold text-white ms-1 mx-2" id="loginName"></span>
             <a class="btn btn-outline-danger mx-3" id="logOutBtn" style="display: none;" href="../controllers/logOut.php" type="submit">Log Out</a>
             <!-- endif -->
-
-
-            <form class="d-flex mx-3" role="search">
-                <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
 
             <a class="btn btn-light btn-sm mx-6 px-3 py-2" data-bs-toggle="offcanvas" href="#offcanvasExample" role="button" aria-controls="offcanvasExample">
                 Setting <i class="bi bi-gear my-2"></i>
