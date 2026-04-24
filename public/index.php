@@ -10,7 +10,10 @@ $registry->set("db", $db);
 
 //new \core\Application();
 $router = new core\Router();
+//rules uri detect which controller need to use
 $router->get("", "app\\controller\\testClass");
+$router->get("auth", "app\\controller\\account\\Auth");
+
 
 $class_name = $router->match();
 // class_name = app\controller\\testClass

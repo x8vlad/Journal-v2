@@ -5,31 +5,31 @@ class HeaderController extends \core\Controller{
         $menu_links = [
             [
                 'label' => 'main page',
-                'url' => '/ja/projectPHP/dziennik/view/main.tpl.php',
+                'url' => '/ja/projectPHP/dziennik/view/main.php',
             ],
             [
                 'label' => 'messages',
-                'url' => '/ja/projectPHP/dziennik/view/messages.tpl.php',
+                'url' => '/ja/projectPHP/dziennik/view/messages.php',
             ],
             [
-                'label' => 'planLessens',
-                'url' => '/ja/projectPHP/dziennik/view/planLessens.tpl.php',
+                'label' => 'plan lesson',
+                'url' => '/ja/projectPHP/dziennik/view/planLessens.php',
             ],
             [
                 'label' => 'announcement',
-                'url' => '/ja/projectPHP/dziennik/view/ogloszenia.tpl.php',
+                'url' => '/ja/projectPHP/dziennik/view/ogloszenia.php',
             ],
             [
                 'label' => 'attendance',
-                'url' => '/ja/projectPHP/dziennik/view/attendance.tpl.php',
+                'url' => '/ja/projectPHP/dziennik/view/attendance.php',
             ],
             [
-                'label' => 'Grade',
+                'label' => 'grades',
                 'url' => '/ja/projectPHP/dziennik/controllers/grades.php',
             ],
             [
-                'label' => 'Profile',
-                'url' => '/ja/projectPHP/dziennik/view/profile.tpl.php',
+                'label' => 'profile',
+                'url' => '/ja/projectPHP/dziennik/view/profile.php',
             ]
         ];
         return $this->load->view("common/header", $menu_links);
