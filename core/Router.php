@@ -55,9 +55,6 @@ class Router
 //                    echo $class_name; app\controller\testClass
                 return $class_name;
             }
-            else{
-                echo " not ok from " . __FILE__;
-            }
         }
         if(!$isMatch){
             // redirect to not found page
