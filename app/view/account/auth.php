@@ -1,18 +1,15 @@
 <div class="container my-5">
     <h1>Welcome to main page - Auth</h1>
-
     <div id="liveAlertPlaceholder"></div>
-
     <div class="col-lg-8 px-0">
         <p id="headerRegister">Register form</p>
-        <!-- в ajax бдут менять когда login показывать this p когда регистр то тот выше -->
         <p style="display:none;" id="headerLogin">Login form</p>
 
         <hr class="col-1 my-2">
         <div class="card shadow-lg p-4 mb-5 rounded" style="background-color: #e8ecf1ff" id="registerBlock">
 
             <!-- sign up -- register -->
-            <form action="controllers/register.php" method="POST" id="RegisterForm">
+            <form action="/auth" method="POST" id="RegisterForm">
                 <!-- login -->
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Login</label>

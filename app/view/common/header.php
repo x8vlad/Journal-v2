@@ -38,7 +38,7 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <?php foreach($data as $link): ?>
-                    <li class="nav-item">
+                    <li class="nav-item"> 
                         <a class="nav-link" href="<?= $link['url']; ?>">
                             <?= $link['label']; ?>
                         </a>

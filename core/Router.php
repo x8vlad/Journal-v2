@@ -32,11 +32,11 @@ class Router
     }
 
     public function show(){
-        echo "method show: ";
-        echo "<pre>";
-            var_dump($this->routes);
+        //echo "method show: ";
+        //echo "<pre>";
+          //  var_dump($this->routes);
 //            var_dump($this->uri);
-        echo "</pre>";
+        //echo "</pre>";
     }
 
     // match

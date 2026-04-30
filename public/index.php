@@ -13,6 +13,7 @@ $router = new core\Router();
 //rules uri detect which controller need to use
 //$router->get("", "app\\controller\\testClass");
 $router->get("auth", "app\\controller\\account\\Auth");
+$router->post("auth", "app\\controller\\account\\Register");
 
 
 $class_name = $router->match();
@@ -24,6 +25,7 @@ $class_name = $router->match();
 //$controller = new $class_name($registry);
 //$controller->index();
 // app\controller\testClass == testClass
+//HERE WRITE METHOD MAN
 $loader->controller($class_name, "");
 //$test->show();
 //$test = new \app\controller\testClass($registry);

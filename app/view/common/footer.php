@@ -1,20 +1,16 @@
 <script src="/js/main.js" type="module"></script>
-
 <script>
     //const BASE_URL = "<?php //= BASE_URL ?>//";
 </script>
 <!--<script src="--><?php //= BASE_URL ?><!--assets/bootstrap.js"></script>-->
 <!--<script src="--><?php //= BASE_URL ?><!--ajaxScript.js"></script>-->
 <!--<script src="--><?php //= BASE_URL ?><!--settings.js"></script>-->
-
 <div>test text for footer</div>
-
 <div class="offcanvas offcanvas-start" tabindex="-1" id="offcanvasExample" aria-labelledby="offcanvasExampleLabel">
     <div class="offcanvas-header">
         <h5 class="offcanvas-title" id="offcanvasExampleLabel">Settings</h5>
         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
     </div>
-
     <div class="offcanvas-body">
         <div>
             <!-- Some text as placeholder. In real life you can have the elements you have chosen. Like, text, images, lists, etc. -->
