@@ -4,7 +4,7 @@ use app\controller\account\Register;
 use app\model\User;
 
 class RegisterValidator {
-    private $registry;
+//    private $registry;
 
     private $login;
     private $email;
@@ -12,10 +12,10 @@ class RegisterValidator {
     private $role;
     private $pwd_confirm;
 
-    public function __construct($registry, $login, $email, $pwd, $role, $pwd_confirm){
+    public function __construct($login, $email, $pwd, $role, $pwd_confirm){
         // file_put_contents("../testSystem.txt", "Constructor called: $login\n", FILE_APPEND);
-        $this->registry = $registry;
-
+        //$this->registry = $registry;
+        //$user = new User($this->registry);
         $this->login = $login;
         $this->email = $email;
         $this->pwd = $pwd;
@@ -23,9 +23,8 @@ class RegisterValidator {
         $this->pwd_confirm = $pwd_confirm;
     }
 
-    public function signUpUser(){
+    public function signUpUser($user){
         // look at the namespace - use app\model\User;
-        $user = new User($this->registry);
         if($this->isDataFilled() == false){
             return "empty input";
             // header("location: ../view/main.tpl.php?error=emptyinput");
@@ -47,8 +46,8 @@ class RegisterValidator {
             // exit();
         }
 
-        if($this->isUserTaken() == true){
-            return "usertaken";
+        if($this->isUserTaken($user) == true){
+            return "user taken";
             // header("location: ../view/main.tpl.php?error=UserTaken");
             // exit();
         }
@@ -87,8 +86,7 @@ class RegisterValidator {
         else{return false;}
     }
 
-    protected function isUserTaken(){
-        $user = new User($this->registry);
+    protected function isUserTaken($user){
         if($user->isUserExists($this->login,$this->email)){return true;}
         else{return false;}
     }

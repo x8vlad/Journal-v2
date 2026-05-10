@@ -6,7 +6,7 @@ class User
 
     public function __construct($registry)
     {
-        $this->db = $registry->get('db');
+        $this->db = $registry->get('db'); // di
     }
 
     //'SELECT * FROM `users` WHERE email LIKE "%_s%"' && 'SELECT * FROM `users` WHERE email LIKE "%_t%"'
@@ -31,7 +31,7 @@ class User
 
         try{
             $stmt->execute(array($login, $email, $hash_pwd, $role));
-            file_put_contents("../testSystem.txt", "User inserted successfully: $login \n", FILE_APPEND);
+            file_put_contents("../testSystem.txt", "User added successfully: $login \n", FILE_APPEND);
         }catch (PDOException $error){
             file_put_contents("../testSystem.txt", "DB INSERT FAILED for $login: " . $error->getMessage() . "\n", FILE_APPEND);
         }

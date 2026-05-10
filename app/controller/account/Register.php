@@ -27,21 +27,34 @@ class Register extends \core\Controller
                 $role = "guest";
             }
 
+            //DI $this->registry
             $userModel = new \app\model\User($this->registry);
-            $exists = $userModel->isUserExists($login, $email);
 
-            $RegisterValidatorObj = new \app\service\RegisterValidator($this->registry,$login, $email, $password, $role, $confirm_password);
-            $result = $RegisterValidatorObj->signUpUser();
-            if ($result == "success") {
+            // DI $this->registry
+            $RegisterValidatorObj = new \app\service\RegisterValidator($login, $email, $password, $role, $confirm_password);
+            $result = $RegisterValidatorObj->signUpUser($userModel);
 
-                echo json_encode(["status" => "success"]);
-            } else {
-                echo json_encode(
-                    [
-                        "status" => "error",
-                        "msg" => "problem with reg:" . $result
-                    ]
-                );
+            switch ($result){
+                case "success":
+                    echo json_encode(["status" => "success", "msg" => "user has been added"]);
+                    break;
+                case "empty field":
+                    echo json_encode(["status" => "not success, empty fields", "msg" => "empty fields"]);
+                    break;
+                case "invalid login":
+                    echo json_encode(["status" => "not success, invalid login", "msg" => "invalid login"]);
+                    break;
+                case "invalid email":
+                    echo json_encode(["status" => "not success, invalid email", "msg" => "invalid email"]);
+                    break;
+                case "PwdNotMatch":
+                    echo json_encode(["status" => "not success, pass not match", "msg" => "Password not match"]);
+                    break;
+                case "user taken":
+                    echo json_encode(["status" => "not success, user taken", "msg" => "user taken"]);
+                    break;
+                default:
+                    echo json_encode(["status" => "error",  "msg" => "problem with reg:" . $result]);
             }
         } else {
             echo json_encode(

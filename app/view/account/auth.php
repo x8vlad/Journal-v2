@@ -1,4 +1,7 @@
 <div class="container my-5">
+
+    <div id="liveAlertPlaceholder"></div>
+
     <h1>Welcome to main page - Auth</h1>
     <div id="liveAlertPlaceholder"></div>
     <div class="col-lg-8 px-0">
@@ -9,7 +12,7 @@
         <div class="card shadow-lg p-4 mb-5 rounded" style="background-color: #e8ecf1ff" id="registerBlock">
 
             <!-- sign up -- register -->
-            <form action="/auth" method="POST" id="RegisterForm">
+            <form action="/auth" method="POST" id="registerForm">
                 <!-- login -->
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Login</label>
@@ -47,7 +50,7 @@
         <!-- sign in -- login form -->
         <div class="card shadow-lg p-4 mb-5 rounded" style="background-color: #e8ecf1ff; display:none;" id="loginBlock">
 
-            <form action="controllers/login.php" method="POST" id="loginForm">
+            <form action="/auth" method="POST" id="loginForm">
                 <!-- login pole -->
                 <div class="mb-3">
                     <label for="exampleInputEmail1" class="form-label">Login</label>
@@ -67,4 +70,6 @@
             </form>
         </div>
     </div>
+
+    <p class="output"></p>
 </div>
