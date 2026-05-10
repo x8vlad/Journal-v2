@@ -41,25 +41,24 @@ class Router
 
     // match
 
-    public function match(){
-        $isMatch = false;
-
-        foreach ($this->routes as $route){
+    public function match()
+    {
+        foreach ($this->routes as $route) {
 //            echo "<pre>";
 //                var_dump($route);
 //            echo "</pre>";
+
             $class_name = $route['controller'];
-            if($this->uri === $route['uri'] && $this->method === $route['method']){
-//                echo " ok";
-                $isMatch = true;
-//                    echo $class_name; app\controller\testClass
+            if ($this->uri === $route['uri'] && $this->method === $route['method']) {
+            //echo " ok";
+            //echo $class_name; app\controller\testClass
                 return $class_name;
             }
         }
-        if(!$isMatch){
-            // redirect to not found page
-            echo " 404 - NOT FOUDN";
-            die();
-        }
+        file_put_contents("../testSystem.txt", "Route not found: $this->uri \n", FILE_APPEND);
+        header('Content-Type: application/json');
+        http_response_code(404);
+        echo json_encode(["status" => "error", "msg" => "Route not found"]);
+        die();
     }
 }

@@ -13,6 +13,7 @@ $router = new core\Router();
 //rules uri detect which controller need to use
 //$router->get("", "app\\controller\\testClass");
 $router->get("auth", "app\\controller\\account\\Auth");
+$router->get("", "app\\controller\\testClass"); // main page with resource "/"
 $router->post("auth", "app\\controller\\account\\Register");
 
 
