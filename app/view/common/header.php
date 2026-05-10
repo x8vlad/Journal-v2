@@ -7,6 +7,7 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Journal</title>
+    <link rel="shortcut icon" type="image/png" href="/notebook.png"/>
     <!-- <link href="/ja/projectPHP/dziennik/assets/bootstrap.css?v2" rel="stylesheet"> -->
 <!--    <link href="--><?php //= BASE_URL ?><!--assets/bootstrap.css?v2" rel="stylesheet">-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
