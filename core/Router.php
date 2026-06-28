@@ -10,9 +10,21 @@ class Router
 
     public function __construct()
     {
-//        $this->uri= trim(parse_url($_SERVER['REQUEST_URI']));
-        $this->uri= trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
-        $this->method=$_SERVER['REQUEST_METHOD'];
+        $path = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+
+        // try to find: Journal-v2/public/index.php
+        // must be: auth
+        // REQUEST_URI = Journal-v2/public/index.php
+        $path = str_replace('Journal-v2/public/index.php', '', $path);
+        $path = str_replace('Journal-v2/public/', '', $path);
+        $path = str_replace('index.php', '', $path);
+
+        $this->uri = trim($path, '/');
+        $this->method = $_SERVER['REQUEST_METHOD'];
+
+        echo "finally URI:" . $this->uri . PHP_EOL;
+
+
     }
 
     public function add($uri, $controller, $method){
@@ -44,6 +56,8 @@ class Router
     public function match()
     {
         foreach ($this->routes as $route) {
+//            echo "try to find" . $this->uri . PHP_EOL; // !auth, output: ournal-v2/public/index.php
+//            echo "method: " . $this->method . PHP_EOL;
 //            echo "<pre>";
 //                var_dump($route);
 //            echo "</pre>";
@@ -54,6 +68,9 @@ class Router
             //echo $class_name; app\controller\testClass
                 return $class_name;
             }
+
+            echo $class_name . " does not match " . $route['uri'] . PHP_EOL;
+            // app\controller\account\Register does not match auth
         }
         file_put_contents("../testSystem.txt", "Route not found: $this->uri \n", FILE_APPEND);
         header('Content-Type: application/json');
