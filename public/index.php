@@ -1,6 +1,4 @@
 <?php
-phpinfo();
-die();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
 echo "index.php lauch" . PHP_EOL;
