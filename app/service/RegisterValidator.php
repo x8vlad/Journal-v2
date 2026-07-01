@@ -13,7 +13,7 @@ class RegisterValidator {
     private $pwd_confirm;
 
     public function __construct($login, $email, $pwd, $role, $pwd_confirm){
-        // file_put_contents("../testSystem.txt", "Constructor called: $login\n", FILE_APPEND);
+        // file_put_contents("../logs/testSystem.log", "Constructor called: $login\n", FILE_APPEND);
         //$this->registry = $registry;
         //$user = new User($this->registry);
         $this->login = $login;
@@ -23,10 +23,11 @@ class RegisterValidator {
         $this->pwd_confirm = $pwd_confirm;
     }
 
-    public function signUpUser($user){
+    public function signUpUser(User $user){
+        // need to add to method USER: "setUser" returnb boolean to check it here!
         // look at the namespace - use app\model\User;
         if($this->isDataFilled() == false){
-            return "empty input";
+            return "empty field";
             // header("location: ../view/main.tpl.php?error=emptyinput");
             // exit();
         }
@@ -51,8 +52,14 @@ class RegisterValidator {
             // header("location: ../view/main.tpl.php?error=UserTaken");
             // exit();
         }
-        $user->setUser($this->login,$this->email,$this->pwd, $this->role);
-        return "success";
+        $result = $user->setUser($this->login,$this->email,$this->pwd, $this->role);
+
+        if(!$result){
+            return "error with insert user";
+        }else{
+            return "success";
+        }
+
 
     }
 

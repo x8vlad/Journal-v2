@@ -3,7 +3,6 @@
     <div id="liveAlertPlaceholder"></div>
 
     <h1>Welcome to main page - Auth</h1>
-    <div id="liveAlertPlaceholder"></div>
     <div class="col-lg-8 px-0">
         <p id="headerRegister">Register form</p>
         <p style="display:none;" id="headerLogin">Login form</p>
@@ -15,18 +14,18 @@
             <form action="/auth" method="POST" id="registerForm">
                 <!-- login -->
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Login</label>
+                    <label for="login_input" class="form-label">Login</label>
                     <input type="text" name="login" class="form-control" id="login_input" aria-describedby="loginHelp">
                 </div>
                 <!-- emial -->
                 <div class="mb-3">
-                    <label for="exampleInputEmail1" class="form-label">Email address</label>
+                    <label for="email_input" class="form-label">Email address</label>
                     <input type="email" name="email" class="form-control" id="email_input" aria-describedby="emailHelp">
                     <div id="emailHelp" class="form-text">We'll share your email with anyone else.</div>
                 </div>
                 <!-- pass -->
                 <div class="mb-3">
-                    <label for="exampleInputPassword1" class="form-label">Password</label>
+                    <label for="password_input" class="form-label">Password</label>
                     <input type="password" name="password" class="form-control" id="password_input">
                 </div>
                 <!-- pass confirm -->

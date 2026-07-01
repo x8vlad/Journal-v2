@@ -5,7 +5,7 @@ use app\model\User;
 
 
 header('Content-Type: application/json');
-session_start();
+
 class Register extends \core\Controller
 {
 

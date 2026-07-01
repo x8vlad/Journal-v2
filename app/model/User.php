@@ -20,7 +20,7 @@ class User
     }
 
 
-    public function setUser($login, $email, $pwd, $role){
+    public function setUser($login, $email, $pwd, $role) : bool {
         $query_insert = 'INSERT INTO `users` (login,email,pass,role) VALUES (?,?,?,?)';
         $stmt = $this->db->connect()->prepare($query_insert);
 
@@ -30,10 +30,18 @@ class User
         $hash_pwd = password_hash($pwd, PASSWORD_DEFAULT);
 
         try{
-            $stmt->execute(array($login, $email, $hash_pwd, $role));
-            file_put_contents("../testSystem.txt", "User added successfully: $login \n", FILE_APPEND);
-        }catch (PDOException $error){
-            file_put_contents("../testSystem.txt", "DB INSERT FAILED for $login: " . $error->getMessage() . "\n", FILE_APPEND);
+            $success_result = $stmt->execute(array($login, $email, $hash_pwd, $role));
+
+            if($success_result){
+                file_put_contents("../logs/testSystem.log", "User added successfully: $login \n", FILE_APPEND);
+            }else{
+                file_put_contents("../logs/testSystem.log", "DB INSERT FAILED for $login: " . "ttrouble with inserting at DB" . "\n", FILE_APPEND);
+            }
+
+            return $success_result;
+        }catch (\PDOException $error){
+            file_put_contents("../logs/testSystem.log", "DB INSERT FAILED for $login: " . $error->getMessage() . "\n", FILE_APPEND);
+            return false;
         }
 
         // if(!$stmt->execute(array($login, $email, $hash_pwd, $role))){
@@ -41,7 +49,6 @@ class User
         //     // header("Location: ../view/main.tpl.php?error=smthfail");
         //     // exit();
         // }
-        $stmt = null;
     }
 
     public function isUserExists($login, $email){

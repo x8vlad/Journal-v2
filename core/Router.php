@@ -10,16 +10,16 @@ class Router
 
     public function __construct()
     {
-        $path = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
+        $this->uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
         // try to find: Journal-v2/public/index.php
         // must be: auth
         // REQUEST_URI = Journal-v2/public/index.php
-        $path = str_replace('Journal-v2/public/index.php', '', $path);
-        $path = str_replace('Journal-v2/public/', '', $path);
-        $path = str_replace('index.php', '', $path);
+//        $path = str_replace('Journal-v2/public/index.php', '', $path);
+//        $path = str_replace('Journal-v2/public/', '', $path);
+//        $path = str_replace('index.php', '', $path);
 
-        $this->uri = trim($path, '/');
+//        $this->uri = trim($path, '/');
         $this->method = $_SERVER['REQUEST_METHOD'];
 
         echo "finally URI:" . $this->uri . PHP_EOL;
@@ -71,7 +71,7 @@ class Router
             echo $class_name . " does not match " . $route['uri'] . PHP_EOL;
             // app\controller\account\Register does not match auth
         }
-        file_put_contents("../testSystem.txt", "Route not found: $this->uri \n", FILE_APPEND);
+        file_put_contents("../logs/testSystem.log", "Route not found: $this->uri \n", FILE_APPEND);
         header('Content-Type: application/json');
         http_response_code(404);
         echo json_encode(["status" => "error", "msg" => "Route not found"]);
