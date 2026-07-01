@@ -23,7 +23,7 @@ $router->get("auth", "app\\controller\\account\\Auth");
 $router->get("", "app\\controller\\testClass"); // main page with resource "/"
 $router->post("auth", "app\\controller\\account\\Register");
 
-$router->get("lessons", "app\\controller\\basic"); // main page with resource "/"
+$router->get("lessons", "app\\controller\\lesson\\LessonController"); // main page with resource "/"
 
 
 
