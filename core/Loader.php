@@ -27,7 +27,9 @@ final class Loader{
 
         if(!$this->registry->has($registry_key)){
             $file = __DIR__ . '/../app/model/' . $name_model . '.php';
-            $class_model = 'Model' . preg_replace('/[^a-zA-Z0-9]/', '', $name_model);
+//            $class_model = 'Model' . preg_replace('/[^a-zA-Z0-9]/', '', $name_model);
+            $class_model = '\\app\\model\\' . str_replace('/', '\\', $name_model);;
+
             //$class_model = ModelTestModel
             if(file_exists($file)){
                 include_once($file);
