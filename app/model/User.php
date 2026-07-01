@@ -1,6 +1,6 @@
 <?php
 namespace app\model;
-class User
+class User extends \core\Model
 {
     private $db;
 

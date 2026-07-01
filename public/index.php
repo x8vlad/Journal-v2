@@ -7,6 +7,7 @@ require_once "../core/autoloader.php";
 echo "autloader.php lauch" . PHP_EOL;
 $registry = new \core\Registry();
 $loader = new \core\Loader($registry);
+//load!
 $registry->set("load", $loader);
 $db = new \core\Dbh($registry);
 $registry->set("db", $db);

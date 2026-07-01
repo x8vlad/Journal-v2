@@ -13,8 +13,17 @@
                 <th>Classroom</th>
             </tr>
             <tbody id="table-body-lessens">
-            <!--here I need to feel table by controller-->
-            <!--//require_once(controller('table-lessensAJAX.php'));-->
+            <!--here I need to feel table by controller data foreach-->
+
+            <?php foreach ($data->schedule as $lesson) : ?>
+            <tr>
+                <td> <?= htmlspecialchars($lesson['num_less']) ?> </td>
+                <td> <?= htmlspecialchars($lesson['name_subject']) ?> </td>
+                <td> <?= htmlspecialchars($lesson['start_less']) ?> </td>
+                <td> <?= htmlspecialchars($lesson['end_less']) ?> </td>
+                <td> <?= htmlspecialchars($lesson['classroom']) ?> </td>
+            </tr>
+            <?php endforeach; ?>
             </tbody>
         </table>
 
