@@ -2,6 +2,8 @@
 // or full path: str_replace("\\", "/", "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
 namespace core;
 
+use app\service\logger\FileLogger;
+
 class Router
 {
     protected array $routes = [];
@@ -71,7 +73,9 @@ class Router
             echo $class_name . " does not match " . $route['uri'] . PHP_EOL;
             // app\controller\account\Register does not match auth
         }
-        file_put_contents("../logs/testSystem.log", "Route not found: $this->uri \n", FILE_APPEND);
+        $logger = new FileLogger();
+        $logger->error("route not found: " . $this->uri . PHP_EOL);
+
         header('Content-Type: application/json');
         http_response_code(404);
         echo json_encode(["status" => "error", "msg" => "Route not found"]);

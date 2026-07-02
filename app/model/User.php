@@ -1,12 +1,17 @@
 <?php
 namespace app\model;
+use app\service\logger\FileLogger; // !!!
+
 class User extends \core\Model
 {
+
     private $db;
+//    private $logger;
 
     public function __construct($registry)
     {
         $this->db = $registry->get('db'); // di
+//        $this->logger = $registry->get('logger'); // di
     }
 
     //'SELECT * FROM `users` WHERE email LIKE "%_s%"' && 'SELECT * FROM `users` WHERE email LIKE "%_t%"'
@@ -25,45 +30,33 @@ class User extends \core\Model
         $stmt = $this->db->connect()->prepare($query_insert);
 
 //        $stmt = Dbh::getInstance()->connect()->prepare($query_insert);
-
+        // hardcode
+        $logger = new FileLogger();
         // hash the pwd :)
         $hash_pwd = password_hash($pwd, PASSWORD_DEFAULT);
-
         try{
             $success_result = $stmt->execute(array($login, $email, $hash_pwd, $role));
-
+            // second line
             if($success_result){
-                file_put_contents("../logs/testSystem.log", "User added successfully: $login \n", FILE_APPEND);
+                $logger->info("User added successfully: " . $login);
             }else{
-                file_put_contents("../logs/testSystem.log", "DB INSERT FAILED for $login: " . "ttrouble with inserting at DB" . "\n", FILE_APPEND);
+                $logger->error("Error in adding user, trouble with inserting at DB: " . $login);
             }
-
             return $success_result;
         }catch (\PDOException $error){
-            file_put_contents("../logs/testSystem.log", "DB INSERT FAILED for $login: " . $error->getMessage() . "\n", FILE_APPEND);
+            $logger->info("DB Failed: " . $login . "error:" . $error->getMessage());
             return false;
         }
-
-        // if(!$stmt->execute(array($login, $email, $hash_pwd, $role))){
-        //     $stmt = null;
-        //     // header("Location: ../view/main.tpl.php?error=smthfail");
-        //     // exit();
-        // }
     }
-
     public function isUserExists($login, $email){
         $query_select = 'SELECT * FROM `users` WHERE login = ? OR email = ?';
 
         $stmt = $this->db->connect()->prepare($query_select);
 
-        //        $stmt = Dbh::getInstance()->connect()->prepare($query_select);
-
         if(!$stmt->execute(array($login, $email))){
             $stmt = null;
-            // header("Location: ../view/main.tpl.php?error=smthfail");
-            // exit();
         }
-        // если найдено больше нуля юзер то значит он уже есть в бд и не надо добавлять и регестривть
+
         $isInsetsUser = false;
         if($stmt->rowCount() > 0){$isInsetsUser = true;}
         else{$isInsetsUser = false;}
