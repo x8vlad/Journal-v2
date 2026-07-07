@@ -1,17 +1,20 @@
 <?php
 // or full path: str_replace("\\", "/", "https://$_SERVER[HTTP_HOST]$_SERVER[REQUEST_URI]");
 namespace core;
+use app\service\logger\FileLogger; // !!!
 
-use app\service\logger\FileLogger;
+//use app\service\logger\FileLogger;
 
 class Router
 {
+//    protected $registry;
     protected array $routes = [];
     protected string $uri;
     protected string $method;
 
     public function __construct()
     {
+//        $this->registry=$registry;
         $this->uri = trim(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH), '/');
 
         // try to find: Journal-v2/public/index.php
@@ -73,6 +76,8 @@ class Router
             echo $class_name . " does not match " . $route['uri'] . PHP_EOL;
             // app\controller\account\Register does not match auth
         }
+//        $logger = $registry->get("logger");
+//        $$this->logger->error("Route not found" . $this->uri . ", method: " . $this->method);
         $logger = new FileLogger();
         $logger->error("route not found: " . $this->uri . PHP_EOL);
 

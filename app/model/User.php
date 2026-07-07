@@ -4,12 +4,14 @@ use app\service\logger\FileLogger; // !!!
 
 class User extends \core\Model
 {
-
+    protected $registry;
     private $db;
-//    private $logger;
+
 
     public function __construct($registry)
     {
+//        $this->logger = $registry->get('logger');
+
         $this->db = $registry->get('db'); // di
 //        $this->logger = $registry->get('logger'); // di
     }
@@ -38,13 +40,15 @@ class User extends \core\Model
             $success_result = $stmt->execute(array($login, $email, $hash_pwd, $role));
             // second line
             if($success_result){
+//                $this->logger->info("User added successfully: " . $login);
                 $logger->info("User added successfully: " . $login);
             }else{
-                $logger->error("Error in adding user, trouble with inserting at DB: " . $login);
+                $logger->warning("Warning in adding user, trouble with inserting at DB: " . $login);
             }
             return $success_result;
         }catch (\PDOException $error){
-            $logger->info("DB Failed: " . $login . "error:" . $error->getMessage());
+            $logger->error("DB Failed: " . $login . "error:" . $error->getMessage());
+            //
             return false;
         }
     }
