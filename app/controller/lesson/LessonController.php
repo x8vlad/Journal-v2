@@ -9,6 +9,10 @@ class LessonController extends Controller
         $day = 3; // I need change it via session or idk
 //      $this->load->model("TestModel")->testM(); // if u use ->model u need to write namespace (Loader 31 line)
         $schedule = $this->load->model("lesson/Lesson")->showSchedule($day);
+//        echo "<pre>";
+//        var_dump($schedule);
+//        echo "<pre>";
+//        die;
         $data_for_lesson_view = [
             'test_content' => 'Test content from a lesson controller!',
             'schedule' => $schedule
