@@ -32,7 +32,6 @@ final class Dbh {
     public function queryByID($query, $id){
         $stmt = $this->connection->prepare($query);
         $stmt->bindParam(":id", $id);
-
         echo "😁";
 
         $stmt->execute(array("id" => $id));

@@ -70,7 +70,9 @@ class RegisterValidator {
         // if empty
         if(empty($this->login) || empty($this->email) || empty($this->pwd) || empty($this->pwd_confirm)){
             return false;
-        }else{return true;}
+        }else{
+            return true;
+        }
         // return $result;
     }
 
@@ -79,22 +81,31 @@ class RegisterValidator {
         // $result = true;
         if(preg_match("/^[a-zA-Z0-9]*$/", $this->login)){
             return true;
-        }else{return false;}
+        }else{
+            return false;
+        }
     }
     //valid email
     protected function isValidEmail(){
         if(filter_var($this->email, FILTER_VALIDATE_EMAIL)){
             return true;
-        }else{return false;}
+        }else{
+            return false;
+        }
     }
     // match pwd
     protected function isPwdMatch(){
         if($this->pwd == $this->pwd_confirm){return true;}
-        else{return false;}
+        else{
+            // warning log
+            return false;
+        }
     }
 
     protected function isUserTaken($user){
         if($user->isUserExists($this->login,$this->email)){return true;}
-        else{return false;}
+        else{
+            return false;
+        }
     }
 }
