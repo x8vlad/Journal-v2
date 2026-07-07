@@ -1,4 +1,7 @@
 <?php
+
+use app\service\logger\LoggerMain;
+
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -13,9 +16,8 @@ $registry->set("load", $loader);
 $db = new \core\Dbh($registry);
 $registry->set("db", $db);
 
-
 //new \core\Application();
-$router = new core\Router();
+$router = new core\Router($registry);
 //rules uri detect which controller need to use
 //$router->get("", "app\\controller\\testClass");
 
@@ -26,6 +28,8 @@ $router->get("", "app\\controller\\testClass"); // main page with resource "/"
 $router->post("auth", "app\\controller\\account\\Register");
 
 $router->get("lessons", "app\\controller\\lesson\\LessonController"); // main page with resource "/"
+$router->get("message", "app\\controller\\messenger\\MessageController"); // main page with resource "/"
+
 
 
 

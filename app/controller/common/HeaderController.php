@@ -9,7 +9,7 @@ class HeaderController extends \core\Controller{
             ],
             [
                 'label' => 'messages',
-                'url' => '',
+                'url' => '/message',
             ],
             [
                 'label' => 'plan lesson',
