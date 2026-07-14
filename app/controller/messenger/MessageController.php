@@ -5,7 +5,7 @@ class MessageController extends \core\Controller
 {
     public function index(){
 
-        $option = $_GET['userOption'];
+//        $option = $_GET['userOption'];
 //        echo $option;
 
         $users = $this->load->model("messenger/Message");
@@ -17,7 +17,7 @@ class MessageController extends \core\Controller
 //        echo "<pre>";
 //        die;
 
-        $data_for_user = $users->certainUser($option);
+//        $data_for_user = $users->certainUser($option);
 
         $data_for_users_view = [
             'data_for_users' => $data_for_users,
@@ -29,13 +29,13 @@ class MessageController extends \core\Controller
 
 
         //if all
-        if($option == "*"){
-//            $result = all users
-        }else{
-
-        }
+//        if($option == "*"){
+////            $result = all users
+//        }else{
+//
+//        }
         /* @var object $result */
-        $this->render("messenger/message_view", $result);
+        $this->render("messenger/message_view", $data_for_users_view);
         // !all
     }
 }
