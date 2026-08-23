@@ -1,1 +1,15 @@
-<?php
+<?php echo "test announcement view";?>
+<div class="container my-5">
+    <h1>Form for announcement</h1>
+    <form method="POST" action="">
+        <div class="mb-3">
+            <label class="form-label">Title</label>
+            <input type="text" id="title" name="title" class="form-control">
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Content</label>
+            <textarea name="content" id="content" class="form-control"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success" id="attempBtn" name="btn_submit">Attempt</button>
+    </form>
+</div>

@@ -6,5 +6,9 @@ use core\Controller;
 
 class AnnouncementController extends Controller
 {
+    public function index(){
 
+
+        $this->render('announcement/announcement_view', []);
+    }
 }

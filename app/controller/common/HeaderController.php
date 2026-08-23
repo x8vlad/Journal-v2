@@ -17,7 +17,7 @@ class HeaderController extends \core\Controller{
             ],
             [
                 'label' => 'announcement',
-                'url' => '',
+                'url' => '/announcement',
             ],
             [
                 'label' => 'attendance',

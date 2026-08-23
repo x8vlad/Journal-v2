@@ -29,6 +29,7 @@ $router->post("auth", "app\\controller\\account\\Register");
 
 $router->get("lessons", "app\\controller\\lesson\\LessonController"); // main page with resource "/"
 $router->get("message", "app\\controller\\messenger\\MessageController"); // main page with resource "/"
+$router->get("announcement", "app\\controller\\announcement\\AnnouncementController"); // main page with resource "/"
 
 
 
