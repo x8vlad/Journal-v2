@@ -35,8 +35,7 @@
         </table>
 
         <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalWindowAddAnnouncement">
-            Add announcement
-        </button>
+            Add announcement </button>
 
 <!--        <button type="button" class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#modalWindowAddAnnouncement">Add announcement</button>-->
 <!--        <a class="btn btn-dark" data-bs-toggle="modal" data-bs-target="#">Add announcement</a>-->
@@ -53,7 +52,7 @@
                         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
 
-                    <form method="POST" action="">
+                    <form method="POST" action="/announcement/add">
                         <div class="modal-body">
                             <div class="mb-3">
                                 <label class="form-label">Title</label>

@@ -35,4 +35,14 @@ class Announcement extends Model
         ]
         */
     }
+
+    public function addAnnouncement($title, $content) {
+        $add_announcement = "INSERT INTO `announcement` (`title`, `content`) VALUES (:title, :content)";
+        $stmt = $this->db->connect()->prepare($add_announcement);
+
+        return $stmt->execute([
+            ':title' => $title,
+            ':content' => $content
+        ]);
+    }
 }

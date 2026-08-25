@@ -97,3 +97,7 @@ form.addEventListener('submit', function (event){
 // let output = document.querySelector('.output');
 // output.innerHTML = data.status;
 
+                                    // ANNOUNCEMENT PART: (add)
+document.getElementById('attempBtn').addEventListener("click", function (){
+
+})
