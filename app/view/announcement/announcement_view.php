@@ -1,15 +1,72 @@
-<?php echo "test announcement view";?>
-<div class="container my-5">
-    <h1>Form for announcement</h1>
-    <form method="POST" action="">
-        <div class="mb-3">
-            <label class="form-label">Title</label>
-            <input type="text" id="title" name="title" class="form-control">
+<?php
+    /* @var object $data */
+?>
+<div class="container my-5" id="mainBlock">
+    <h1>Announcement!</h1>
+    <div class="col-lg-8 px-0">
+        <!-- btn add Announcement -->
+
+        <div id="liveAlertPlaceholder"></div>
+
+        <hr class="col-1 my-4">
+
+        <table class="table" id="tableBlock">
+            <tr>
+                <th>Id</th>
+                <th>Title</th>
+                <th>Content</th>
+                <th>Data</th>
+                <th>Actions</th>
+            </tr>
+            <tbody id="table-body">
+            <!-- потом будет в controllers -->
+            <?php foreach ($data->announcements as $announcement) :  ?>
+            <tr>
+                <td> <?= htmlspecialchars($announcement['id']) ?> </td>
+                <td> <?= htmlspecialchars($announcement['title']) ?> </td>
+                <td> <?= htmlspecialchars($announcement['content']) ?> </td>
+                <td> <?= htmlspecialchars($announcement['created_at']) ?> </td>
+            </tr>
+            <?php endforeach; ?>
+            </tbody>
+            <!-- php endwhile -->
+        </table>
+
+
+
+        <a href=" ?>view/add_announcement.tpl.php" class="btn btn-dark">Add announcement</a>
+
+        <!-- onclick="return false;" -->
+        <a href="xxx ?>controllers/remove_announcement.php" class="btn btn-danger"  id="remover_btn">Remove all announcements</a>
+        <!-- <button type="button" id="editor_btn" class="btn btn-outline-dark" data-toggle="modal" data-target="#editBtn">Edit announcements(id)</button> -->
+        <!-- <a href="#" class="btn btn-outline-dark"  id="editor_btn" data-toggle="modal" data-target="#editBtn">Edit announcements(id)</a>  -->
+
+        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalLabel">Edit date</h5>
+                    </div>
+                    <!-- edit date for PHP and AJAX -->
+                    <form action="?>controllers/edit_announcement.php" method="POST" id="FormForEdit">
+                        <div class="modal-body">
+                            <!-- hide pole ID(чтобы понять на какое именно поле нажал юзер(чтобы получить титул и контеткт оглошения)) -->
+                            <input type="hidden" name="id" id="EditDateId">
+
+                            <!-- <input type="text" id="EditDateId" name="EditDateId" class="form-control my-3" placeholder="id" aria-label="UserID" aria-describedby="visible-addon"> -->
+                            <input type="text" id="EditDateTitle" name="title" class="form-control my-3" placeholder="title" aria-label="Title" aria-describedby="visible-addon">
+                            <input type="text" id="EditDateContent" name="content" class="form-control my-3" placeholder="content" aria-label="Content" aria-describedby="visible-addon">
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="closeEditModal">Close</button>
+                            <button type="submit" class="btn btn-primary" name="TotalEditModal" id="TotalEditModal">Attempt</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
         </div>
-        <div class="mb-3">
-            <label class="form-label">Content</label>
-            <textarea name="content" id="content" class="form-control"></textarea>
-        </div>
-        <button type="submit" class="btn btn-success" id="attempBtn" name="btn_submit">Attempt</button>
-    </form>
-</div>
+        <p id="mistake"></p>
+        <!-- <button type="submit" class="btn btn-danger" submit="">Remove all announcements</button> -->
+
+    </div>
