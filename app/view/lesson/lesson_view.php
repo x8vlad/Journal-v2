@@ -13,9 +13,9 @@
                 <th>Classroom</th>
             </tr>
             <tbody id="table-body-lessens">
-            <!--here I need to feel table by controller data foreach-->
+            <!--here I need to feel table by controller data foreach echo "<pre>"; var_dump($lesson); die();-->
 
-            <?php foreach ($data->schedule as $lesson) : ?>
+            <?php foreach ($data->schedule as $lesson) :  ?>
             <tr>
                 <td> <?= htmlspecialchars($lesson['num_less']) ?> </td>
                 <td> <?= htmlspecialchars($lesson['name_subject']) ?> </td>

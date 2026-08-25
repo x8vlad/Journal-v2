@@ -8,6 +8,7 @@ class LessonController extends Controller
     public function index(){
         $day = 3; // I need change it via session or idk
 //      $this->load->model("TestModel")->testM(); // if u use ->model u need to write namespace (Loader 31 line)
+        // Request for a data from model "Lesson" nonie
         $schedule = $this->load->model("lesson/Lesson")->showSchedule($day);
 //        echo "<pre>";
 //        var_dump($schedule);

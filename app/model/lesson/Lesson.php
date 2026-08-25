@@ -25,6 +25,7 @@ class Lesson extends \core\Model
         $stmt = $this->db->connect()->prepare($query_schedule);
         $stmt->bindParam(":weekday", $day);
         $stmt->execute();
+        // [ ['num_less' => 1, 'name_subject' => 'Math', ...]
         $schedule = $stmt->fetchAll(\PDO::FETCH_ASSOC);
         return $schedule;
     }
