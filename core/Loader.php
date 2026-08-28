@@ -17,6 +17,8 @@ final class Loader{
         }
         //  = new app\controller\lesson\LessonController
         $class = new $route($this->registry); // return $class_name; = app\controller\testClass
+        // $this->registry нужен для того чтоб в контроллер
+        // обратистя к свойсву ->load которое доступно только для хранилища
         //TODO: in future check if this method exist
 
         //        echo "<pre>";
@@ -54,7 +56,7 @@ final class Loader{
 
             //$class_model = \app\model\testM
             if(file_exists($file)){
-                include_once($file); // файл загружается в память RAM (ОЗУ)
+                include_once($file); // файл загружается в память RAM
                 $model_obj = new $class_model($this->registry); // model_obj = new \app\model\testM (autloader тоже добавялет его в озу)
                 $this->registry->set($registry_key, $model_obj);
                 // set(modeltestmodel, mdoel_obj)
@@ -81,6 +83,5 @@ final class Loader{
 //    public function helper(){}
 
     public function config(){
-
     }
 }
