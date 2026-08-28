@@ -4,7 +4,7 @@ use app\service\RegisterValidator;
 use app\model\User;
 
 
-header('Content-Type: application/json');
+//header('Content-Type: application/json');
 
 class Register extends \core\Controller
 {
@@ -36,33 +36,30 @@ class Register extends \core\Controller
 
             switch ($result){
                 case "success":
-                    echo json_encode(["status" => "success", "msg" => "user has been added"]);
+//                    echo json_encode(["status" => "success", "message" => "user has been added"]);
+                    $this->helper->renderAlert("success", "user has been added");
+                    header('HX-Trigger: resetRegisterForm');
                     break;
                 case "empty field":
-                    echo json_encode(["status" => "not success, empty fields", "msg" => "empty fields"]);
+                    $this->helper->renderAlert("warning", "empty fields");
                     break;
                 case "invalid login":
-                    echo json_encode(["status" => "not success, invalid login", "msg" => "invalid login"]);
+                    $this->helper->renderAlert("warning", "invalid login");
                     break;
                 case "invalid email":
-                    echo json_encode(["status" => "not success, invalid email", "msg" => "invalid email"]);
+                    $this->helper->renderAlert("warning", "invalid email");
                     break;
                 case "PwdNotMatch":
-                    echo json_encode(["status" => "not success, pass not match", "msg" => "Password not match"]);
+                    $this->helper->renderAlert("warning", "Password not match");
                     break;
                 case "user taken":
-                    echo json_encode(["status" => "not success, user taken", "msg" => "user taken"]);
+                    $this->helper->renderAlert("danger, user taken", "user taken");
                     break;
                 default:
-                    echo json_encode(["status" => "error",  "msg" => "problem with reg:" . $result]);
+                    $this->helper->renderAlert("danger", "problem with reg:" . $result);
             }
         } else {
-            echo json_encode(
-                [
-                    "status" => "error",
-                    "msg" => "Some field's empty"
-                ]
-            );
+            $this->helper->renderAlert("danger", "Some field's empty");
             exit();
         }
     }

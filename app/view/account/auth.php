@@ -11,7 +11,11 @@
         <div class="card shadow-lg p-4 mb-5 rounded" style="background-color: #e8ecf1ff" id="registerBlock">
 
             <!-- sign up -- register -->
-            <form action="/auth" method="POST" id="registerForm">
+            <form hx-post="/auth"
+                  hx-target="#liveAlertPlaceholder"
+                  id="registerForm"
+                  hx-on-htmx-after-request="if(event.detail.successful) this.reset()">
+
                 <!-- login -->
                 <div class="mb-3">
                     <label for="login_input" class="form-label">Login</label>
