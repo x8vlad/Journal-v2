@@ -1,13 +1,14 @@
 <?php
 
+use app\service\helper\Helper;
 use app\service\logger\LoggerMain;
 
 session_start();
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
-echo "index.php lauch" . PHP_EOL;
+//echo "index.php lauch" . PHP_EOL;
 require_once "../core/autoloader.php";
-echo "autloader.php lauch" . PHP_EOL;
+//echo "autloader.php lauch" . PHP_EOL;
 $registry = new \core\Registry();
 $loader = new \core\Loader($registry);
 //$logger = new \service\logger($registry);
@@ -15,7 +16,8 @@ $loader = new \core\Loader($registry);
 $registry->set("load", $loader);
 $db = new \core\Dbh($registry);
 $registry->set("db", $db);
-
+$helper = new Helper($registry);
+$registry->set("helper", $helper);
 //new \core\Application();
 $router = new core\Router($registry);
 //rules uri detect which controller need to use
