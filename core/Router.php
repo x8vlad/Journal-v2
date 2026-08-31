@@ -32,20 +32,22 @@ class Router
 
     }
 
-    public function add($uri, $controller, $method){
+    public function add($uri, $controller, $method, $controller_method){
         $this->routes[] = [
             'uri' => $uri,
             'controller' => $controller,
-            'method' => $method
+            'method' => $method,
+            // for method from controller (cuz now work only index by default)
+            'controller_method' => $controller_method
         ];
     }
 
-    public function get($uri, $controller){
-       $this->add($uri, $controller, "GET");
+    public function get($uri, $controller, $controller_method){
+       $this->add($uri, $controller, "GET", $controller_method);
     }
 
-    public function post($uri, $controller){
-        $this->add($uri, $controller, "POST");
+    public function post($uri, $controller, $controller_method){
+        $this->add($uri, $controller, "POST", $controller_method);
     }
 
     public function show(){
@@ -61,19 +63,27 @@ class Router
     {
         foreach ($this->routes as $route) {
 //            echo "try to find" . $this->uri . PHP_EOL; // !auth, output: ournal-v2/public/index.php
-//            echo "method: " . $this->method . PHP_EOL;
+            //echo "method: " . $this->method . PHP_EOL;
 //            echo "<pre>";
-//                var_dump($route);
+//                var_dump($this->routes);
 //            echo "</pre>";
-
+//$router->post("announcement/add", "app\\controller\\announcement\\AnnouncementController", "add");
+//           echo "_____________";
+//
+//            echo "<pre>";
+//            var_dump($route);
+//            echo "</pre>";
+//           die();
             $class_name = $route['controller'];
-            if ($this->uri === $route['uri'] && $this->method === $route['method']) {
+
+            if ($this->uri === $route['uri'] && $this->method === $route['method']){
             //echo " ok";
             //echo $class_name; app\controller\testClass
-                return $class_name;
+//                $route['controller_method'];
+                return array($class_name, $route['controller_method']);
             }
 
-            echo $class_name . " does not match " . $route['uri'] . PHP_EOL;
+//            echo $class_name . " does not match " . $route['uri'] . PHP_EOL;
             // app\controller\account\Register does not match auth
         }
 //        $logger = $registry->get("logger");
