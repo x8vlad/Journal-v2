@@ -14,7 +14,7 @@
             <form hx-post="/auth"
                   hx-target="#liveAlertPlaceholder"
                   id="registerForm"
-                  hx-on-htmx-after-request="if(event.detail.successful) this.reset()">
+                  hx-on::after-request="this.reset()">
 
                 <!-- login -->
                 <div class="mb-3">

@@ -4,9 +4,9 @@ namespace app\controller\account;
 use core\Controller;
 class Auth extends Controller
 {
-//    public function test(){
-//        $this->render("account/auth", $data_for_auth = []);
-//    }
+    public function index(){
+        $this->render("account/auth", $data_for_auth = []);
+    }
 
     public function test(){
         echo "hi from test method controller";
