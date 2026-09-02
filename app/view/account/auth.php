@@ -14,9 +14,9 @@
             <form hx-post="/auth"
                   hx-target="#liveAlertPlaceholder"
                   id="registerForm"
-                  hx-on::after-request="this.reset()">
+                  hx-on::after-request="console.log(event); if(event.detail.successful) registerForm.reset()">
 
-                <!-- login -->
+                <!-- login if(evt.detail.successful) this.reset() -->
                 <div class="mb-3">
                     <label for="login_input" class="form-label">Login</label>
                     <input type="text" name="login" class="form-control" id="login_input" aria-describedby="loginHelp">

@@ -53,7 +53,7 @@ class Register extends \core\Controller
                     $this->helper->renderAlert("warning", "Password not match");
                     break;
                 case "user taken":
-                    $this->helper->renderAlert("danger, user taken", "user taken");
+                    $this->helper->renderAlert("danger", "user taken");
                     break;
                 default:
                     $this->helper->renderAlert("danger", "problem with reg:" . $result);
