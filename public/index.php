@@ -25,20 +25,23 @@ $router = new core\Router($registry);
 
 // ! namesapce ever seperating via slash, so this line can distract the PHP and he can mean app / is a namespace not a directoty
 
-$router->get("auth", "app\\controller\\account\\Auth", "test");
-$router->get("", "app\\controller\\testClass", "test2"); // main page with resource "/"
-//$router->post("auth", "app\\controller\\account\\Register");
+$router->get("auth", "app\\controller\\account\\Auth", "index");
+//$router->get("auth", "app\\controller\\account\\Auth", "test");
+//$router->get("", "app\\controller\\testClass", "index"); // main page with resource "/"
+
+$router->post("register", "app\\controller\\account\\Register", "index");
+$router->post("login", "app\\controller\\account\\Login", "login");
 //
 //$router->get("lessons", "app\\controller\\lesson\\LessonController"); // main page with resource "/"
 //$router->get("message", "app\\controller\\messenger\\MessageController"); // main page with resource "/"
-//$router->get("announcement", "app\\controller\\announcement\\AnnouncementController"); // main page with resource "/"
-//$router->post("announcement/add", "app\\controller\\announcement\\AnnouncementController", "add"); // main page with resource "/"
+$router->get("announcement", "app\\controller\\announcement\\AnnouncementController", "index"); // main page with resource "/"
+$router->post("announcement/add", "app\\controller\\announcement\\AnnouncementController", "add"); // main page with resource "/"
 //
 
-
+//$class_name = $router->match();
 list($class_name, $controller_method) = $router->match();
 
-//$class_name = $router->match();
+
 // class_name = app\controller\\testClass
 //$router->show();
 //class name app\controller\\testClass

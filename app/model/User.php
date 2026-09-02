@@ -26,7 +26,7 @@ class User extends \core\Model
         $stmt->execute();
     }
 
-
+    // methods for register:
     public function setUser($login, $email, $pwd, $role) : bool {
         $query_insert = 'INSERT INTO `users` (login,email,pass,role) VALUES (?,?,?,?)';
         $stmt = $this->db->connect()->prepare($query_insert);
@@ -66,4 +66,30 @@ class User extends \core\Model
         else{$isInsetsUser = false;}
         return $isInsetsUser;
     }
+    // methods for login:
+    public function selectUser($login, $password){
+        try {
+            $query_select = 'SELECT * FROM `users` WHERE login = :login';
+            $stmt = $this->db->connect()->prepare($query_select);
+            $stmt->execute(array(':login' => $login));
+
+            if($stmt->rowCount() > 0){
+                $row = $stmt->fetch(\PDO::FETCH_ASSOC);
+
+                $password_hash = $row['pass']; // pass from db (column name)
+
+                if(password_verify($password, $password_hash)){
+                    $_SESSION['login'] = $login;
+                    return true;
+                }
+                return false;
+            }
+        } catch (\PDOException $error){
+            $logger = new FileLogger();
+            $logger->error("DB Failed: " . $login . "error:" . $error->getMessage());
+        }
+        return false;
+    }
+
+
 }
