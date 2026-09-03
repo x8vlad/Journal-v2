@@ -52,7 +52,7 @@
         </div>
 
         <!-- pagination -->
-        <nav aria-label="Page navigation example" class="paginationNav" style="display:none;">
+        <nav aria-label="Page navigation example" class="paginationNav">
             <ul class="pagination">
                 <li class="page-item"><a class="page-link" href="#">1</a></li>
                 <li class="page-item"><a class="page-link" href="#">2</a></li>

@@ -1,6 +1,7 @@
 console.log("Work jQuery");
 
 $(document).ready(function () {
+    // message page
     $("#user-option").on("change", function (event) {
         let userOption = $("#user-option").val();
         // console.log(userOption);
@@ -21,6 +22,34 @@ $(document).ready(function () {
             },
         });
     });
+    // Lesson Page
+    function LessonPlan(activePage) {
+        $.ajax({
+            url: "/lessons",
+            method: "GET",
+            data: {
+                activePage: activePage
+            },
+            success: function (response) {
+                console.log(response);
+                let newBody = $(response).find("#tableBlockLessens").html();
+                $("#tableBlockLessens").html(newBody);
+            },
+            error: function (xhr) {
+                console.log("Error:", xhr.status, xhr.statusText);
+            },
+        });
+        // $(".paginationNav").show();
+        $(".arrows").hide();
+
+
+    }
+    $(".page-link").on("click", function (event) {
+        let activePage = $(this).text();
+        console.log(activePage);
+        event.preventDefault();
+        LessonPlan(activePage);
+    });
 });
 
 
@@ -30,22 +59,7 @@ $(document).ready(function () {
 //         $("div.text-center").show();
 //     }
 //     // fn
-//     function ShowPlann(activePage) {
-//         // console.log("/home/kaine/PhpstormProjects/Journal-v2");
-//         // console.log(""/home/kaine/PhpstormProjects/Journal-v2" =", "/home/kaine/PhpstormProjects/Journal-v2");
-//         $.ajax({
-//             url: "/lessons",
-//             method: "POST",
-//             data: { activePage }, // тож самое что и {activePage : activePage}
-//             success: function (response) {
-//                 // console.log(response);
-//                 $("#table-body-lessens").html(response);
-//             },
-//             error: function (xhr) {
-//                 console.log("Error:", xhr.status, xhr.statusText);
-//             },
-//         });
-//     }
+
 //     console.log("READY!");
 //
 //     // $(document).on('click', '.MenuBlock', function(e){
@@ -82,16 +96,7 @@ $(document).ready(function () {
 //                 });
 //             } else {
 //                 // console.log("pagination");
-//                 $(".paginationNav").show();
-//                 $(".arrows").hide();
 //
-//                 $(".page-link").on("click", function (event) {
-//                     // console.log($(this).text());
-//                     let activePage = $(this).text();
-//                     console.log(activePage);
-//                     event.preventDefault();
-//
-//                     ShowPlann(activePage);
 //                 });
 //             }
 //         });
