@@ -23,11 +23,11 @@
                                 <th>Message</th>
                             </tr>
                             <tbody id="table-body">
-                                <?php foreach ($data->data_for_users as $users) : ?>
+                                <?php foreach ($data->data_for_users as $user) : ?>
                                     <tr>
-                                        <td> <?= htmlspecialchars($users['id']) ?> </td>
-                                        <td> <?= htmlspecialchars($users['login']) ?> </td>
-                                        <td><button class="btn btn-outline-dark editBtn me-2" <?= $users['id'] ?>>Message</button></td>
+                                        <td> <?= htmlspecialchars($user['id']) ?> </td>
+                                        <td> <?= htmlspecialchars($user['login']) ?> </td>
+                                        <td><button class="btn btn-outline-dark editBtn me-2" <?= $user['id'] ?>>Message</button></td>
                                     </tr>
                                 <?php endforeach; ?>
                             </tbody>
