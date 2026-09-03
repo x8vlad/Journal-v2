@@ -8,8 +8,7 @@
                 <hr class="col-1 my-4">
                 <div>
                     <div class="d-flex flex-column align-items-end">
-
-                        <select name="userOption" class="form-select form-select-sm shadow-sm mb-3 w-120">
+                        <select name="userOption" id="user-option" class="form-select form-select-sm shadow-sm mb-3 w-120">
                             <option value="*">All users</option>
                             <option value="student">Students</option>
                             <option value="teacher">Teachers</option>

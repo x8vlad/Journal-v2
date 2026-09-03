@@ -25,9 +25,9 @@ class Message extends Model
 
     public function certainUser($roleSelected)
     {
-        $query = "SELECT id,login FROM `users` WHERE role = :users ORDER BY id ASC";
+        $query = "SELECT id,login FROM `users` WHERE role = :user ORDER BY id ASC";
         $stmt = $this->db->connect()->prepare($query);
-        $stmt->bindValue(":users", $roleSelected);
+        $stmt->bindValue(":user", $roleSelected);
         $stmt->execute();
 
         $data_user_role = $stmt->fetchAll(\PDO::FETCH_ASSOC);
