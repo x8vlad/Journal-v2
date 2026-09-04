@@ -17,12 +17,17 @@ class AnnouncementController extends Controller
         $this->render('announcement/announcement_view', $data_for_announcement_view);
     }
 
-    public function addAnnouncementView() {
+    public function addAnnouncement_() {
         $title = $_POST['title']?? null;
         $content = $_POST['content'] ?? null;
 
-        $this->load->model("announcement/Announcement")->addAnnouncement($title, $content);
-        exit();
+       $this->load->model("announcement/Announcement")->addAnnouncement($title, $content);
+       header("Location: /announcement");
+       exit();
+    }
+    // editAnnouncementView ($announcement_id)
+    public function add() {
+        echo "hi from add method";
     }
 
 }
