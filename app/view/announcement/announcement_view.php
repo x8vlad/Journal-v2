@@ -26,7 +26,12 @@
                 <td> <?= htmlspecialchars($announcement['title']) ?> </td>
                 <td> <?= htmlspecialchars($announcement['content']) ?> </td>
                 <td> <?= htmlspecialchars($announcement['created_at']) ?> </td>
-                <td><button class="btn btn-outline-dark editBtn me-2" data-id="<?=$announcement['id']?>">Edit</button>
+                <td><button class="btn btn-outline-dark editBtn me-2" data-bs-toggle="modal" data-bs-target="#editModal"
+                            data-id="<?=$announcement['id']?>"
+                            data-title="<?= htmlspecialchars($announcement['title']) ?>"
+                            data-content="<?= htmlspecialchars($announcement['content']) ?>">
+
+                        Edit</button>
                 <button class="btn btn-outline-danger DeleteBtn" data-id="<?=$announcement['id']?>">Delete</button></td>
             </tr>
             <?php endforeach; ?>
@@ -76,26 +81,31 @@
 
 
         <!--edit data-->
-        <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
+        <div class="modal fade" id="editModal" tabindex="-1" aria-labelledby="editModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Edit date</h5>
+                        <h5 class="modal-title" id="editModalLabel">Edit announcement</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                     </div>
-                    <!-- edit date for PHP and AJAX -->
-                    <form action="?>controllers/edit_announcement.php" method="POST" id="FormForEdit">
+
+                    <form method="POST" action="/announcement/edit" id="FormForEdit">
                         <div class="modal-body">
-                            <!-- hide pole ID(чтобы понять на какое именно поле нажал юзер(чтобы получить титул и контеткт оглошения)) -->
                             <input type="hidden" name="id" id="EditDateId">
 
-                            <!-- <input type="text" id="EditDateId" name="EditDateId" class="form-control my-3" placeholder="id" aria-label="UserID" aria-describedby="visible-addon"> -->
-                            <input type="text" id="EditDateTitle" name="title" class="form-control my-3" placeholder="title" aria-label="Title" aria-describedby="visible-addon">
-                            <input type="text" id="EditDateContent" name="content" class="form-control my-3" placeholder="content" aria-label="Content" aria-describedby="visible-addon">
+                            <div class="mb-3">
+                                <label class="form-label">Title</label>
+                                <input type="text" id="EditDateTitle" name="title" class="form-control">
+                            </div>
+                            <div class="mb-3">
+                                <label class="form-label">Content</label>
+                                <textarea name="content" id="EditDateContent" class="form-control" rows="3"></textarea>
+                            </div>
                         </div>
 
                         <div class="modal-footer">
-                            <button type="button" class="btn btn-danger" data-dismiss="modal" id="closeEditModal">Close</button>
-                            <button type="submit" class="btn btn-primary" name="TotalEditModal" id="TotalEditModal">Attempt</button>
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" id="TotalEditModal">Save changes</button>
                         </div>
                     </form>
                 </div>

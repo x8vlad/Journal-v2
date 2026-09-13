@@ -17,7 +17,7 @@ class AnnouncementController extends Controller
         $this->render('announcement/announcement_view', $data_for_announcement_view);
     }
 
-    public function addAnnouncement_() {
+    public function addAnnouncement() {
         $title = $_POST['title']?? null;
         $content = $_POST['content'] ?? null;
 
@@ -26,6 +26,12 @@ class AnnouncementController extends Controller
        exit();
     }
     // editAnnouncementView ($announcement_id)
+
+    public function editAnnouncement(){
+        header("Location: /register");
+        exit();
+    }
+
     public function add() {
         echo "hi from add method";
     }

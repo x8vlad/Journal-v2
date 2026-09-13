@@ -32,10 +32,11 @@ $router->get("auth", "app\\controller\\account\\Auth", "index");
 $router->post("register", "app\\controller\\account\\Register", "index");
 $router->post("login", "app\\controller\\account\\Login", "login");
 //
-//$router->get("lessons", "app\\controller\\lesson\\LessonController"); // main page with resource "/"
-//$router->get("message", "app\\controller\\messenger\\MessageController"); // main page with resource "/"
+$router->get("lessons", "app\\controller\\lesson\\LessonController", "index");
+$router->get("message", "app\\controller\\messenger\\MessageController", "message");
 $router->get("announcement", "app\\controller\\announcement\\AnnouncementController", "index"); // main page with resource "/"
-$router->post("announcement/add", "app\\controller\\announcement\\AnnouncementController", "add"); // main page with resource "/"
+$router->post("announcement/add", "app\\controller\\announcement\\AnnouncementController", "addAnnouncement"); // main page with resource "/"
+$router->post("announcement/edit", "app\\controller\\announcement\\AnnouncementController", "editAnnouncement"); // main page with resource "/"
 //
 
 //$class_name = $router->match();

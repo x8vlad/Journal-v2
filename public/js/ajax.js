@@ -50,6 +50,20 @@ $(document).ready(function () {
         event.preventDefault();
         LessonPlan(activePage);
     });
+
+    function Announcement() {
+        $(".editBtn").on("click", function (event) {
+            let id_ = this.dataset.id;
+            let title_ = this.dataset.title;
+            let content_ = this.dataset.content;
+
+            document.getElementById("EditDateId").value = id_;
+            document.getElementById("EditDateTitle").value =  title_;
+            document.getElementById("EditDateContent").value = content_;
+            console.log(event);
+        });
+    }
+    Announcement();
 });
 
 
@@ -187,7 +201,7 @@ $(document).ready(function () {
 //     // for DELEGATE events
 //     $(document).on("click", ".editBtn", function () {
 //         console.log("click on editBtn");
-//         let id = $(this).data("id");
+//  TODO:       let id = $(this).data("id");
 //         // Нужно подняться к родительскому <tr> и найти .announcement-title:
 //         let title = $(this).closest("tr").find(".announcement-title").data("title");
 //         let content = $(this)
